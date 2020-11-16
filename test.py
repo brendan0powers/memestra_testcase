@@ -1,3 +1,3 @@
-import testimport
+import testmodule
 
-t = testimport.Test()
+t = testmodule.Test()
