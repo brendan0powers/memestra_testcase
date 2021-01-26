@@ -1,3 +1,4 @@
-import testmodule
+from testimport import *
 
-t = testmodule.Test()
+t = Test()
+f = Foo()

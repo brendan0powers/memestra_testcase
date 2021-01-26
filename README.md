@@ -4,20 +4,24 @@
 ```
 beniget                       0.3.0
 gast                          0.4.0
-memestra                      0.0.7
-nbconvert                     5.6.0
-nbformat                      4.4.0
+memestra                      0.1.2
 ```
 
-When using a deprecated class `Test` that was imported, and then re-exported by `testmodule`, memestra does not recognized the use of deprecated code.
+The module `testimport` has two classes, `Test` and `Foo`.
+`Test` is deprecated, `Foo` is not.
+When importing using `*`, both classes are marked as deprecated.
+When only `Test` should be.
+If the classes are imported by name, it works as expected.
 
 **output:**
 ```
-$ memestra --recursive test.py
+$ memestra test.py
+Foo used at test.py:4:5 - This is deprecated
+Test used at test.py:3:5 - This is deprecated
 ```
 
 **expected output:**
 ```
-$ memestra --recursive test.py
-testimport.Test used at test.py:3:5 This is deprecated
+$ memestra test.py
+Test used at test.py:3:5 - This is deprecated
 ```
